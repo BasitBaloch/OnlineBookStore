@@ -1,9 +1,16 @@
 package com.dm.OnlineBookStore.entity;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class CartItem {
     @Id
@@ -18,6 +25,5 @@ public class CartItem {
     @ManyToOne
     @JoinColumn(name="cart_id", nullable=false)
     private ShoppingCart shoppingCart;
-//    @ManyToOne
-//    private User user;
+
 }

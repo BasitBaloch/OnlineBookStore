@@ -10,7 +10,7 @@ import com.dm.OnlineBookStore.repository.CartItemRepository;
 import com.dm.OnlineBookStore.repository.ShoppingCartRepository;
 import com.dm.OnlineBookStore.service.BookStoreService;
 import com.dm.OnlineBookStore.service.CartItemService;
-import io.micrometer.common.util.StringUtils;
+import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
@@ -56,9 +56,10 @@ public class BookStoreServiceImpl implements BookStoreService {
     @Override
     public List<CartItem> searchBookItem(String search){
         List<CartItem> cartItems = null;
-        if(StringUtils.isNotEmpty(search)){
+        if(search != null){
             cartItems=cartItemRepository.findBySearch(search);
         }
+
         return cartItems;
     }
 
